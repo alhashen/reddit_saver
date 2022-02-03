@@ -10,9 +10,9 @@ import (
 
 func readJSONData(filepath string) []*DataPost {
 	file, err := os.ReadFile(filepath)
-  check(err)
+	check(err)
 
-  var read []*DataPost
+	var read []*DataPost
 	json.Unmarshal(file, &read)
 
 	return read
@@ -24,12 +24,12 @@ func writeJSONFile(filename string, v interface{}) {
 	if filepath.Dir(filename) != "." {
 		if _, err := os.Stat(filepath.Dir(filename)); os.IsNotExist(err) {
 			err := os.Mkdir(filepath.Dir(filename), 0777)
-		  check(err)	
+			check(err)
 		}
 	}
 
 	err := ioutil.WriteFile(filename, file, 0644)
-  check(err)	
+	check(err)
 }
 
 func sendJSONResponse(w http.ResponseWriter, i interface{}) {
