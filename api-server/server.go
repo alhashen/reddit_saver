@@ -47,7 +47,6 @@ func main() {
 	fs := http.FileServer(http.Dir("./build"))
 	http.Handle("/", http.StripPrefix("/build", fs))
 	http.HandleFunc("/test", handler)
-	//http.Handle("/ui", http.StripPrefix("/build", fs))
 	http.HandleFunc("/login", loginHandler)
 	http.HandleFunc("/callback", callbackHandler)
 	http.HandleFunc("/home", homeHandler)
@@ -477,7 +476,6 @@ func convertData(w http.ResponseWriter, r *http.Request, s *sessions.Session, su
 
 	converted = getInfo(source_chunks, s, keep_link)
 
-	//Ngambil data parent title kalo tipe komen :[
 	if !submission {
 		var link_ids []string
 		var parents []*DataPost
